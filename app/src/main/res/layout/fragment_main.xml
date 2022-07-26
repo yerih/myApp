@@ -6,6 +6,9 @@
         <variable
             name="viewModel"
             type="com.admissions.empty_project.ui.MainViewModel" />
+        <variable
+            name="uiState"
+            type="com.admissions.empty_project.ui.MainViewModel.UiState" />
 
     </data>
 
@@ -53,6 +56,8 @@
                 android:textAllCaps="false"
                 android:textSize="14sp"
                 android:text="@{viewModel.email}"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionDone"
                 android:layout_gravity="center"/>
         </com.google.android.material.textfield.TextInputLayout>
 

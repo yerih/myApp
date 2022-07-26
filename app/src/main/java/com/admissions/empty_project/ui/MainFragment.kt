@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.admissions.empty_project.common.launchAndCollect
 import com.admissions.empty_project.data.R
 import com.admissions.empty_project.data.databinding.FragmentMainBinding
@@ -20,15 +21,16 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainBinding.bind(view)
+        binding.viewModel = viewModel
         launchAndCollect(viewModel.event){ event ->
             when(event){
-                NavigateToDashboard -> {}
-                NavigateToSignUp    -> {}
+                NavigateToDashboard -> findNavController().navigate(MainFragmentDirections.actionMainFragmentToDashboardFragment())
+                is NavigateToSignUp -> findNavController().navigate(MainFragmentDirections.actionMainFragmentToSignUpFragment())
             }
         }
         launchAndCollect(viewModel.state){
             with(binding){
-                viewModel.email = inputEmail.text.toString().trim()
+                viewModel?.email = inputEmail.text.toString().trim()
                 binding.viewModel = viewModel
             }
         }
