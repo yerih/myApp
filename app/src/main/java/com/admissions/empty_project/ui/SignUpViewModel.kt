@@ -28,6 +28,7 @@ class SignUpViewModel @Inject constructor(
 
     sealed interface UiEvent{
         object NavigateToDashboard: UiEvent
+        object NavigateToGallery : UiEvent
     }
     private val _event = Channel<UiEvent>()
     val event = _event.receiveAsFlow()
@@ -50,8 +51,8 @@ class SignUpViewModel @Inject constructor(
         return check
     }
 
-    fun onImageClicked(){
-
+    fun onImageClicked() = launch {
+        _event.send(UiEvent.NavigateToGallery)
     }
 
     fun onSaveClicked(){
@@ -65,5 +66,10 @@ class SignUpViewModel @Inject constructor(
             userUseCases.insertOrReplace(user)
             _event.send(UiEvent.NavigateToDashboard)
         }
+    }
+
+    fun setImageUri(path: String) {
+        image = path
+        _state.update { it.copy(capture = !it.capture) }
     }
 }

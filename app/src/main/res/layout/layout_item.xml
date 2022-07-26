@@ -34,6 +34,7 @@
                     android:id="@+id/image"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    app:image="@{user.image}"
                     tools:src="@drawable/ic_launcher_background" />
             </androidx.cardview.widget.CardView>
 

@@ -26,6 +26,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         }
         launchAndCollect(mViewModel.state){
             with(binding){
+                image = it.image
                 list = it.list
                 viewModel = mViewModel
             }

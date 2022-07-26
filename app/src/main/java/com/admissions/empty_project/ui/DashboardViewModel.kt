@@ -17,7 +17,8 @@ class DashboardViewModel @Inject constructor(
 ) : ViewModel() {
 
     data class UiState(
-        val list: List<User> = mutableListOf()
+        val list: List<User> = mutableListOf(),
+        val image: String = ""
     )
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
@@ -30,7 +31,8 @@ class DashboardViewModel @Inject constructor(
 
     init {
         launch(Dispatchers.IO) {
-            _state.update { it.copy(list = userUseCases.getAll()) }
+            val list = userUseCases.getAll().reversed()
+            _state.update { it.copy(list = list, image = list.first().image) }
             log("list db = ${_state.value.list}")
         }
     }
@@ -46,7 +48,6 @@ class DashboardViewModel @Inject constructor(
             if(pos == 0)return@launch
             userUseCases.delete(user)
             _state.update { it.copy(list = userUseCases.getAll()) }
-//            if(userUseCases.isEmpty()){_event.send(UiEvent.NavigateToSignUp); return@launch}
         }
     }
 
