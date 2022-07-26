@@ -41,8 +41,10 @@ class DashboardViewModel @Inject constructor(
     }
 
     fun onDeleteClicked(user: User) {
-        log("delet clicked")
-
+        launch(Dispatchers.IO) {
+            userUseCases.delete(user)
+            _state.update { it.copy(list = userUseCases.getAll()) }
+        }
     }
 
 
