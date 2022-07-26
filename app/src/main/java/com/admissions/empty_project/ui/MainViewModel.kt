@@ -54,10 +54,10 @@ class MainViewModel @Inject constructor(
     }
 
     fun onLoginClicked() {
-        checkInput()
-        log("email = $email, state = ${_state.value}")
-        if(!_state.value.validEmail)return
         launch(Dispatchers.IO) {
+            if(email.isEmpty()){_event.send(UiEvent.NavigateToSignUp(email)); return@launch}
+            log("email = $email, state = ${_state.value}")
+            captureData()
             with(_state.value) {
                 when {
                     email.isEmpty() -> _event.send(UiEvent.NavigateToSignUp(email))

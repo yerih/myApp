@@ -25,7 +25,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         launchAndCollect(viewModel.event){ event ->
             when(event){
                 NavigateToDashboard -> findNavController().navigate(MainFragmentDirections.actionMainFragmentToDashboardFragment())
-                is NavigateToSignUp -> findNavController().navigate(MainFragmentDirections.actionMainFragmentToSignUpFragment())
+                is NavigateToSignUp -> findNavController().navigate(MainFragmentDirections.actionMainFragmentToSignUpFragment(viewModel.email))
             }
         }
         launchAndCollect(viewModel.state){

@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.admissions.empty_project.common.launchAndCollect
 import com.admissions.empty_project.data.R
 import com.admissions.empty_project.data.databinding.FragmentDashboardBinding
+import com.admissions.empty_project.ui.DashboardViewModel.UiEvent.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +30,10 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                 viewModel = viewModel
             }
         }
-        launchAndCollect(viewModel.event){
+        launchAndCollect(viewModel.event){ event ->
+            when(event){
+                NavigateToSignUp -> findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToSignUpFragment(""))
+            }
 
         }
     }

@@ -1,20 +1,128 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.admissions.empty_project.ui.SignUpViewModel" />
+
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
         tools:context="com.admissions.empty_project.ui.SignUpFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
 
-    </FrameLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="60dp">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                tools:src="@drawable/ic_launcher_background" />
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="@dimen/margin_form"
+            android:autofillHints="emailAddress"
+            android:hint="hint"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="@color/blue"
+            app:boxStrokeErrorColor="#FF0000"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:hintEnabled="true"
+            app:placeholderText="placeholder">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑ"
+                android:text="@{viewModel.email}"
+                android:textAllCaps="false"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="@dimen/margin_form"
+            android:autofillHints="emailAddress"
+            android:hint="hint"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="@color/blue"
+            app:boxStrokeErrorColor="#FF0000"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:hintEnabled="true"
+            app:placeholderText="placeholder">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailAddress"
+                android:text="@{viewModel.email}"
+                android:textAllCaps="false"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="@dimen/margin_form"
+            android:autofillHints="emailAddress"
+            android:hint="hint"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="@color/blue"
+            app:boxStrokeErrorColor="#FF0000"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:hintEnabled="true"
+            app:placeholderText="placeholder">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailAddress"
+                android:text="@{viewModel.email}"
+                android:textAllCaps="false"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
 </layout>
