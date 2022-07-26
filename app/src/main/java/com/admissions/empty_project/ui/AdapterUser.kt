@@ -11,14 +11,14 @@ import com.admissions.empty_project.data.R
 import com.admissions.empty_project.data.databinding.LayoutItemBinding
 
 class AdapterUser (
-    private val listener: (User) -> Unit
+    private val listener: (User, Int) -> Unit
 ) : ListAdapter<User, AdapterUser.ViewHolder>(basicDiffUtil{ old, new -> old.id == new.id }){
 
-    class ViewHolder(view: View, val listener: (User) -> Unit) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, val listener: (User, Int) -> Unit) : RecyclerView.ViewHolder(view) {
         private val binding = LayoutItemBinding.bind(view)
-        fun bind(user: User){
+        fun bind(user: User, position: Int){
             binding.user = user
-            binding.btnDelete.setOnClickListener { listener(user) }
+            binding.btnDelete.setOnClickListener { listener(user, position) }
         }
     }
 
@@ -26,6 +26,6 @@ class AdapterUser (
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user =getItem(position)
-        holder.bind(user)
+        holder.bind(user, position)
     }
 }

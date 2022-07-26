@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
-    private var adapter = AdapterUser{mViewModel.onDeleteClicked(it)}
+    private var adapter = AdapterUser{ user, pos -> mViewModel.onDeleteClicked(user, pos)}
     private val mViewModel: DashboardViewModel by viewModels()
     private lateinit var binding: FragmentDashboardBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

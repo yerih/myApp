@@ -11,7 +11,6 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = UserEntityName)
 data class UserEntity(
     @PrimaryKey
-//    val id: String,
     val email: String,
     val phone: String,
     val name: String,

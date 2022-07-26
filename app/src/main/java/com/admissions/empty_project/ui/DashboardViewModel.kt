@@ -40,9 +40,10 @@ class DashboardViewModel @Inject constructor(
         launch (Dispatchers.IO){ _event.send(UiEvent.NavigateToSignUp) }
     }
 
-    fun onDeleteClicked(user: User) {
+    fun onDeleteClicked(user: User, pos: Int) {
         launch(Dispatchers.IO) {
             if(userUseCases.getAll().size == 1)return@launch
+            if(pos == 0)return@launch
             userUseCases.delete(user)
             _state.update { it.copy(list = userUseCases.getAll()) }
 //            if(userUseCases.isEmpty()){_event.send(UiEvent.NavigateToSignUp); return@launch}
