@@ -5,5 +5,5 @@ import dagger.hilt.android.HiltAndroidApp
 
 
 @HiltAndroidApp
-class EmptyProjectApp: Application() {
+class SporaApp: Application() {
 }

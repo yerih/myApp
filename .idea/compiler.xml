@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="empty_project.app" target="11" />
+      <module name="spora_app.app" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

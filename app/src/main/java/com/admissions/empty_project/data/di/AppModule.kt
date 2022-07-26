@@ -2,7 +2,7 @@ package com.admissions.empty_project.data.di
 
 import android.app.Application
 import com.admissions.data.source.LocalDataSource
-import com.admissions.empty_project.data.database.dao.AnyDao
+import com.admissions.empty_project.data.database.dao.UserDao
 import com.admissions.empty_project.data.database.db.NameAppDataBase
 import com.admissions.empty_project.data.database.db.RoomDataBase
 import com.admissions.empty_project.data.server.AnyNetworkDataSource
@@ -34,6 +34,6 @@ class AppModule {
     fun anyDaoProvider(db: NameAppDataBase) = db.anyDao()
 
     @Provides
-    fun localDataSource(anyDao: AnyDao): LocalDataSource = RoomDataBase(anyDao)
+    fun localDataSource(userDao: UserDao): LocalDataSource = RoomDataBase(userDao)
 
 }

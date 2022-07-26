@@ -4,17 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.admissions.empty_project.data.database.dao.AnyDao
-import com.admissions.empty_project.data.database.entity.AnyEntity
+import com.admissions.empty_project.data.database.dao.UserDao
+import com.admissions.empty_project.data.database.entity.UserEntity
 
 
 @Database(
-    entities = [AnyEntity::class],
+    entities = [UserEntity::class],
     version = 1
 )
 
 abstract class NameAppDataBase : RoomDatabase() {
-    abstract fun anyDao(): AnyDao
+    abstract fun anyDao(): UserDao
     companion object{
         @Volatile
         private var INSTANCE: NameAppDataBase? = null
