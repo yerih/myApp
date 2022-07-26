@@ -14,23 +14,23 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
-    private var adapter = AdapterUser{viewModel.onDeleteClicked(it)}
-    private val viewModel: DashboardViewModel by viewModels()
+    private var adapter = AdapterUser{mViewModel.onDeleteClicked(it)}
+    private val mViewModel: DashboardViewModel by viewModels()
     private lateinit var binding: FragmentDashboardBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDashboardBinding.bind(view)
         with(binding){
             recycler.adapter = adapter
-            binding.viewModel = viewModel
+            binding.viewModel = mViewModel
         }
-        launchAndCollect(viewModel.state){
+        launchAndCollect(mViewModel.state){
             with(binding){
                 list = it.list
-                viewModel = viewModel
+                viewModel = mViewModel
             }
         }
-        launchAndCollect(viewModel.event){ event ->
+        launchAndCollect(mViewModel.event){ event ->
             when(event){
                 NavigateToSignUp -> findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToSignUpFragment(""))
             }

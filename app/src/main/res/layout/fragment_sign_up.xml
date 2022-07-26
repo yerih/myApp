@@ -27,66 +27,69 @@
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:onClick="@{()->viewModel.onImageClicked()}"
                 tools:src="@drawable/ic_launcher_background" />
         </androidx.cardview.widget.CardView>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="@dimen/margin_form"
-            android:autofillHints="emailAddress"
-            android:hint="hint"
+            android:hint="nombre"
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusBottomStart="20dp"
             app:boxCornerRadiusTopEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
-            app:boxStrokeColor="@color/blue"
+            app:boxStrokeColor="@color/blue_states"
             app:boxStrokeErrorColor="#FF0000"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="1dp"
             app:hintEnabled="true"
-            app:placeholderText="placeholder">
+            app:placeholderText="Nombre"
+            app:placeholderTextColor="@color/text_detaul">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:imeOptions="actionDone"
+                android:imeOptions="actionNext"
                 android:inputType="text"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZñÑ"
                 android:text="@{viewModel.email}"
                 android:textAllCaps="false"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="@dimen/margin_form"
             android:autofillHints="emailAddress"
-            android:hint="hint"
+            android:hint="email"
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusBottomStart="20dp"
             app:boxCornerRadiusTopEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
-            app:boxStrokeColor="@color/blue"
+            app:boxStrokeColor="@color/blue_states"
             app:boxStrokeErrorColor="#FF0000"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="1dp"
             app:hintEnabled="true"
-            app:placeholderText="placeholder">
+            app:placeholderText="example: email@email.com"
+            app:placeholderTextColor="@color/text_detaul">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:imeOptions="actionDone"
+                android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:text="@{viewModel.email}"
                 android:textAllCaps="false"
@@ -94,23 +97,25 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_phone"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="@dimen/margin_form"
             android:autofillHints="emailAddress"
-            android:hint="hint"
+            android:hint="Number phone"
             app:boxCornerRadiusBottomEnd="20dp"
             app:boxCornerRadiusBottomStart="20dp"
             app:boxCornerRadiusTopEnd="20dp"
             app:boxCornerRadiusTopStart="20dp"
-            app:boxStrokeColor="@color/blue"
+            app:boxStrokeColor="@color/blue_states"
             app:boxStrokeErrorColor="#FF0000"
             app:boxStrokeWidth="1dp"
             app:boxStrokeWidthFocused="1dp"
             app:hintEnabled="true"
-            app:placeholderText="placeholder">
+            app:placeholderText="example: 1234567890"
+            app:placeholderTextColor="@color/text_detaul">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_phone"
@@ -118,11 +123,25 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:imeOptions="actionDone"
-                android:inputType="textEmailAddress"
-                android:text="@{viewModel.email}"
+                android:inputType="phone"
+                android:text="@{viewModel.phone}"
                 android:textAllCaps="false"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:onClick="@{()->viewModel.onSaveClicked()}"
+            app:backgroundTint="@color/blue"
+            app:cornerRadius="20dp"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:text="@string/save" />
     </LinearLayout>
 </layout>

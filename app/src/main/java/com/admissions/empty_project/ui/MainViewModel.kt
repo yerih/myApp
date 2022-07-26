@@ -42,22 +42,19 @@ class MainViewModel @Inject constructor(
             if (userUseCases.isEmpty()) return@launch
             val users = userUseCases.getAll()
             email = users.first().email
+            log("db: email $email")
             putData()
         }
     }
 
     private fun captureData() = _state.update { it.copy(capture = !it.capture) }
     private fun putData() = _state.update { it.copy(put = !it.put, email = email) }
-    private fun checkInput(){
-        captureData()
-        _state.update { it.copy(validEmail = Patterns.EMAIL_ADDRESS.matcher(email).matches()) }
-    }
+
 
     fun onLoginClicked() {
         launch(Dispatchers.IO) {
-            if(email.isEmpty()){_event.send(UiEvent.NavigateToSignUp(email)); return@launch}
-            log("email = $email, state = ${_state.value}")
             captureData()
+            if(email.isEmpty()){_event.send(UiEvent.NavigateToSignUp(email)); return@launch}
             with(_state.value) {
                 when {
                     email.isEmpty() -> _event.send(UiEvent.NavigateToSignUp(email))

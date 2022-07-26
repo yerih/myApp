@@ -7,11 +7,12 @@ import com.admissions.empty_project.data.database.entity.UserEntity
 
 @Dao
 interface UserDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAny(p: UserEntity)
 
-    @Query("DELETE FROM $UserEntityName WHERE id = :id")
-    fun deleteById(id: Long)
+//    @Query("DELETE FROM $UserEntityName WHERE id = :id")
+//    fun deleteById(id: Long)
 
     @Delete
     fun delete(userEntity: UserEntity)

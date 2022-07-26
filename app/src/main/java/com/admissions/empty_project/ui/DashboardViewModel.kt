@@ -31,10 +31,12 @@ class DashboardViewModel @Inject constructor(
     init {
         launch(Dispatchers.IO) {
             _state.update { it.copy(list = userUseCases.getAll()) }
+            log("list db = ${_state.value.list}")
         }
     }
 
     fun onAddClicked(){
+        log("add clicked")
         launch (Dispatchers.IO){ _event.send(UiEvent.NavigateToSignUp) }
     }
 
