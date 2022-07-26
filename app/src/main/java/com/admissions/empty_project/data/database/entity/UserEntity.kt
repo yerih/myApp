@@ -3,15 +3,14 @@ package com.admissions.empty_project.data.database.entity
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.admissions.empty_project.common.UserEntity
+import com.admissions.empty_project.common.UserEntityName
 import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
-@Entity(tableName = UserEntity)
+@Entity(tableName = UserEntityName)
 data class UserEntity(
     @PrimaryKey
-
     val id: String,
     val email: String,
     val phone: String,

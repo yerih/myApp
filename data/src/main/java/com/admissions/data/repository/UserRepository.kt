@@ -12,4 +12,5 @@ class UserRepository(
     suspend fun delete(user: User) = localDataSource.delete(user)
     suspend fun getAll() = localDataSource.getAll()
     suspend fun isEmpty() = localDataSource.getAll().isEmpty()
+    suspend fun getUserByEmail(email: String) = localDataSource.getUserByEmail(email)
 }
