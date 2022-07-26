@@ -23,11 +23,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val data: Intent? = result.data
-            data?.let { data ->
-                log("uri = $data.data")
-                mViewModel.setImageUri(data.data.toString())
-            }
-
+            data?.let { data -> mViewModel.setImageUri(data.data.toString()) }
         }
     }
     private val safeArgs: SignUpFragmentArgs by navArgs()

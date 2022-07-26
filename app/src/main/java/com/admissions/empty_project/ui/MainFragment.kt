@@ -32,8 +32,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 is NavigateToSignUp -> findNavController().navigate(MainFragmentDirections.actionMainFragmentToSignUpFragment(viewModel.email))
             }
         }
-        launchAndCollect(viewModel.state){
+        launchAndCollect(viewModel.state){ state ->
             with(binding){
+//                if(state.email.isNotEmpty()) {
+//                    viewModel?.email = state.email
+//                    inputEmail.setText(state.email)
+//                }else
+//                    viewModel?.email = inputEmail.text.toString().trim()
+                uiState = state
                 viewModel?.email = inputEmail.text.toString().trim()
                 binding.viewModel = viewModel
             }

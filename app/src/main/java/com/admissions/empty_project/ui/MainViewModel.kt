@@ -40,27 +40,21 @@ class MainViewModel @Inject constructor(
     init {
         launch(Dispatchers.IO) {
             if (userUseCases.isEmpty()) return@launch
-            val users = userUseCases.getAll()
-            email = users.first().email
-            log("db: email $email")
-            putData()
+            val user = userUseCases.getAll().reversed().first()
+            _state.update { it.copy(email = user.email, image = user.image) }
         }
     }
 
     private fun captureData() = _state.update { it.copy(capture = !it.capture) }
-    private fun putData() = _state.update { it.copy(put = !it.put, email = email) }
 
 
     fun onLoginClicked() {
         launch(Dispatchers.IO) {
             captureData()
-            if(email.isEmpty()){_event.send(UiEvent.NavigateToSignUp(email)); return@launch}
             with(_state.value) {
                 when {
                     email.isEmpty() -> _event.send(UiEvent.NavigateToSignUp(email))
-                    else -> userUseCases.getUserByEmail(email)
-                        ?.let { _event.send(UiEvent.NavigateToDashboard) }
-                        ?: _event.send(UiEvent.NavigateToSignUp(email))
+                    else -> userUseCases.getUserByEmail(email)?.let { _event.send(UiEvent.NavigateToDashboard) }?: _event.send(UiEvent.NavigateToSignUp(email))
                 }
             }
         }

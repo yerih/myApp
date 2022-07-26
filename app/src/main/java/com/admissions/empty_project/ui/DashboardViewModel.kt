@@ -33,12 +33,10 @@ class DashboardViewModel @Inject constructor(
         launch(Dispatchers.IO) {
             val list = userUseCases.getAll().reversed()
             _state.update { it.copy(list = list, image = list.first().image) }
-            log("list db = ${_state.value.list}")
         }
     }
 
     fun onAddClicked(){
-        log("add clicked")
         launch (Dispatchers.IO){ _event.send(UiEvent.NavigateToSignUp) }
     }
 
@@ -47,7 +45,7 @@ class DashboardViewModel @Inject constructor(
             if(userUseCases.getAll().size == 1)return@launch
             if(pos == 0)return@launch
             userUseCases.delete(user)
-            _state.update { it.copy(list = userUseCases.getAll()) }
+            _state.update { it.copy(list = userUseCases.getAll().reversed()) }
         }
     }
 

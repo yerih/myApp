@@ -57,12 +57,10 @@ class SignUpViewModel @Inject constructor(
 
     fun onSaveClicked(){
         if(!checkInputs()) {
-            log("check inputs.. email $email, name $name, phone $phone, ${_state.value}")
             return
         }
         launch(Dispatchers.IO) {
             val user = User(email = email, name = name, phone = phone, image = image)
-            log("saving,.. email $user")
             userUseCases.insertOrReplace(user)
             _event.send(UiEvent.NavigateToDashboard)
         }
